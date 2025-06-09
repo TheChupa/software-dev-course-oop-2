@@ -69,6 +69,35 @@ public class LemonadeStand {
     //
     // HINT: You can copy and paste the body of the sellLemonade method and should only need to modify the first line.
 
+
+
+    public boolean sellLemonade(int lemons, int sugar, int ice) {
+        Lemonade lemonade = new Lemonade(lemons, sugar, ice);
+
+        if (tryMakingLemonade(lemonade) != null) {
+            money += calculateSale(lemonade);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    //Bonus
+
+    public boolean sellLemonade(double discount) {
+        Lemonade lemonade = new Lemonade();
+        //take discount, turn it into the rate
+        double discountRate =  (100-discount)/100;
+
+        if (tryMakingLemonade(lemonade) != null) {
+            //calculate total price with discount and add to money
+            money += (calculateSale(lemonade) * discountRate);
+            return true;
+        } else {
+            return false;
+        }
+    }
     private Lemonade tryMakingLemonade(Lemonade lemonade) {
         if (sugar >= lemonade.getSugar() && ice >= lemonade.getIce() && lemons >= lemonade.getLemons()) {
             sugar -= lemonade.getSugar();
